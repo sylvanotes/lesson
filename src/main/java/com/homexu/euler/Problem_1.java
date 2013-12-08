@@ -17,7 +17,7 @@ public class Problem_1 {
 	
 	public static int sum2(int start, int end, int inc)
 	{
-		for(int i = inc; i<end; i+=inc)
+		for(int i = 0; i<end; i+=inc)
 			start+=i;
 		return start;
 	}
