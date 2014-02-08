@@ -13,15 +13,15 @@ public class ArraySort {
 	
 	public static void sort(int[] input)
 	{
-		int min = 0;
-		for(int i = 0; i<input.length; i++)
+		for(int outer = 0; outer < input.length; outer++)
 		{
-			for(int j = i; j<input.length; j++)
+			for(int inner = 0; inner < input.length -1; inner++)
 			{
-				if(input[j]>=min)
+				if(input[inner]> input[inner+1])
 				{
-					input[i]=input[j];
-					min = input[j];
+					int temp = input[inner];
+					input[inner] = input[inner+1];
+					input[inner+1] = temp;
 				}
 			}
 		}

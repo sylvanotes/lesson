@@ -2,18 +2,18 @@ package com.homexu.euler;
 
 public class ArrayFormat {
 	
-	public static void display(int[] newArray)
+	public static String display(int[] newArray)
 	{
 		System.out.print("(");
 		for(int i = 0; i<newArray.length-1; i++)
 			System.out.print(newArray[i] + ", ");
-		System.out.print(newArray[newArray.length-1] + ")");
+		return (newArray[newArray.length-1] + ")");
 	}
 	
 	public static void main(String[] args)
 	{
 		int x[] = {34, 56, 78, 49, 60, 2, 38, 10};
-		display(x);
+		System.out.print(display(x));
 	}
 	
 }
