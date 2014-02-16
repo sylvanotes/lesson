@@ -3,15 +3,15 @@ package com.homexu.euler;
 
 public class ArraySort {
 	
-	public static void display(int[] newArray)
+	public static String display(int[] newArray)
 	{
-		System.out.print("(");
+		String dis = "(";
 		for(int i = 0; i<newArray.length-1; i++)
-			System.out.print(newArray[i] + ", ");
-		System.out.print(newArray[newArray.length-1] + ")");
+			dis += (newArray[i] + ", ");
+		return (dis + newArray[newArray.length-1] + ")");
 	}
 	
-	public static void sort(int[] input)
+	public static String sort(int[] input)
 	{
 		for(int outer = 0; outer < input.length; outer++)
 		{
@@ -25,13 +25,13 @@ public class ArraySort {
 				}
 			}
 		}
-		display(input);
+		return (display(input));
 	}
 	
 	public static void main(String[] args)
 	{
-		int[] x = {7, 3, 1, 2};
-		sort(x);
+		int[] x = {8, 2, 4, 19, 93, 1, 283, 18, 7, 5, 11};
+		System.out.print(sort(x));
 	}
 	
 }
