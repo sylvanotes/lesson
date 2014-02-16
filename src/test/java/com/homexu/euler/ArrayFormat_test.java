@@ -5,9 +5,11 @@ import static org.hamcrest.Matchers.*;
 import org.junit.Test;
 
 public class ArrayFormat_test {
-
+	
 	@Test
 	public void test() {
-		//Sorry I don't know how to write the test class for this
+		int[] a = {13, 2, 4, 15, 8, 19};
+		String x = ArrayFormat.display(a);
+		assertThat(x, equalTo("(13, 2, 4, 15, 8, 19)"));
 	}
 }

@@ -4,10 +4,10 @@ public class ArrayFormat {
 	
 	public static String display(int[] newArray)
 	{
-		System.out.print("(");
+		String dis = "(";
 		for(int i = 0; i<newArray.length-1; i++)
-			System.out.print(newArray[i] + ", ");
-		return (newArray[newArray.length-1] + ")");
+			dis += (newArray[i] + ", ");
+		return (dis + newArray[newArray.length-1] + ")");
 	}
 	
 	public static void main(String[] args)
