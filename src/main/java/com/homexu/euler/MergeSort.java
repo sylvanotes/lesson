@@ -2,58 +2,42 @@ package com.homexu.euler;
 
 public class MergeSort {
 	
+	public static void sortArray(int[] input) {
+		sortArray(input, 0, input.length);
+	}
+	
 	public static void sortArray(int[] input, int start, int end){
-		int[] temp = new int[end-start];
+		new MergeSort(input).sortArray(start, end);
+	}
+	
+	private final int[] input;
+	private final int[] temp;
+	private MergeSort(int[] input) {
+		this.input = input;
+		temp = new int[input.length];
+	}
+	
+	private void sortArray(int start, int end){
 		int first = start;
 		int half = start + (end-start)/2;
 		int second = half;
 	
 		if (end-start == 1) return;
 		
-		sortArray(input, start, half);
-		sortArray(input, half, end);
+		sortArray(start, half);
+		sortArray(half, end);
 		
-		for(int x = 0; x<temp.length; x++){
-			if(input[first]<input[second]){
-				temp[x] = input[first];
-				first++;
-			}
-			
-			else {
-				temp[x] = input[second];
-				second++;
-			}
-			
-			if(first==half||second==end)
-				break;
+		for(int x = 0; x<end-start && first < half && second < end; x++){
+			temp[x] = (input[first]<input[second]) ? input[first++] : input[second++];			
 		}
 		
 		boolean isLeft = first<half;
-		for(int x = (first-start)+(second-half); x<temp.length; x++){
-			if(isLeft){
-				temp[x] = input[first];
-				first++;
-			}
-			
-			else {
-				temp[x]=input[second];
-				second++;
-			}
+		for(int x = (first-start)+(second-half); x<end-start; x++){
+				temp[x] = isLeft ? input[first++] : input[second++];
 		}
 		
-		int i = 0;
-		for(int j = start; i<(end-start); j++){
+		for(int i =0, j = start; i<(end-start); j++, i++){
 			input[j] = temp[i];
-			i++;
-		}
-	}
-	
-	public static void sortEntire(int[] input){
-		int size = 2;
-
-		for(int i = 0; i<input.length; i+= size){
-			sortArray(input, i, i+size-1);
-			//size*=2;
 		}
 	}
 	
