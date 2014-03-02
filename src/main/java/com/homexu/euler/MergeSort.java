@@ -2,27 +2,10 @@ package com.homexu.euler;
 
 public class MergeSort {
 	
-/*	public static void mSort(int[] input)
-	{
-		int size = 1;
-
-			for(int i = 0; i<input.length-1; i+=(2*size))
-			{
-				if(input[i+1] < input[i])
-				{
-					int temp = input[i];
-					input[i] = input[i+1];
-					input[i+1] = temp;
-				}
-			}
-
-	}*/
-	
-	public static void sortArray(int[] input)
-	{
-		int[] temp = new int[input.length];
-		int first = 0;
-		int half = input.length/2;
+	public static void sortArray(int[] input, int start, int end){
+		int[] temp = new int[end-start+1];
+		int first = start;
+		int half = start + (end-start+1)/2;
 		int second = half;
 		
 		for(int x = 0; x<temp.length; x++){
@@ -31,8 +14,7 @@ public class MergeSort {
 				first++;
 			}
 			
-			else
-			{
+			else {
 				temp[x] = input[second];
 				second++;
 			}
@@ -42,21 +24,31 @@ public class MergeSort {
 		}
 		
 		for(int x = first+(second-half); x<temp.length; x++){
-			if(first<half)
-			{
+			if(first<half){
 				temp[x] = input[first];
 				first++;
 			}
 			
-			else
-			{
+			else {
 				temp[x]=input[second];
 				second++;
 			}
 		}
 		
-		for(int i = 0; i<temp.length; i++)
-			input[i] = temp[i];
+		int i = 0;
+		for(int j = start; i<(end-start+1); j++){
+			input[j] = temp[i];
+			i++;
+		}
+	}
+	
+	public static void sortEntire(int[] input){
+		int size = 2;
+
+		for(int i = 0; i<input.length; i+= size){
+			sortArray(input, i, i+size-1);
+			//size*=2;
+		}
 	}
 	
 	public static String display(int[] newArray)
