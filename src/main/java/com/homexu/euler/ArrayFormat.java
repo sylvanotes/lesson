@@ -16,4 +16,5 @@ public class ArrayFormat {
 		System.out.print(display(x));
 	}
 	
+	
 }

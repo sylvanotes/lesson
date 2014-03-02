@@ -3,10 +3,15 @@ package com.homexu.euler;
 public class MergeSort {
 	
 	public static void sortArray(int[] input, int start, int end){
-		int[] temp = new int[end-start+1];
+		int[] temp = new int[end-start];
 		int first = start;
-		int half = start + (end-start+1)/2;
+		int half = start + (end-start)/2;
 		int second = half;
+	
+		if (end-start == 1) return;
+		
+		sortArray(input, start, half);
+		sortArray(input, half, end);
 		
 		for(int x = 0; x<temp.length; x++){
 			if(input[first]<input[second]){
@@ -19,12 +24,13 @@ public class MergeSort {
 				second++;
 			}
 			
-			if(first==half||second==input.length)
+			if(first==half||second==end)
 				break;
 		}
 		
-		for(int x = first+(second-half); x<temp.length; x++){
-			if(first<half){
+		boolean isLeft = first<half;
+		for(int x = (first-start)+(second-half); x<temp.length; x++){
+			if(isLeft){
 				temp[x] = input[first];
 				first++;
 			}
@@ -36,7 +42,7 @@ public class MergeSort {
 		}
 		
 		int i = 0;
-		for(int j = start; i<(end-start+1); j++){
+		for(int j = start; i<(end-start); j++){
 			input[j] = temp[i];
 			i++;
 		}
