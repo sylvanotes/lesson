@@ -18,15 +18,15 @@ public class MergeSort {
 	}
 	
 	private void sortArray(int start, int end){
-		int first = start;
-		int half = start + (end-start)/2;
-		int second = half;
-	
 		if (end-start == 1) return;
-		
+
+		int half = (start + end)/2;
+
 		sortArray(start, half);
 		sortArray(half, end);
 		
+		int first = start;
+		int second = half;
 		for(int x = 0; x<end-start && first < half && second < end; x++){
 			temp[x] = (input[first]<input[second]) ? input[first++] : input[second++];			
 		}
