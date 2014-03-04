@@ -13,8 +13,28 @@ public class BinarySearch_test {
 	@Test
 	public void test_inMiddle()
 	{
-		int lookFor = 5;
 		int x = BinarySearch.search(5, a);
 		assertThat(x, equalTo(3));
+	}
+	
+	@Test
+	public void test_atBeginning()
+	{
+		int x = BinarySearch.search(23, b);
+		assertThat(x, equalTo(0));
+	}
+	
+	@Test
+	public void test_withTwo()
+	{
+		int x = BinarySearch.search(7, c);
+		assertThat(x, equalTo(1));
+	}
+	
+	@Test
+	public void test_doesNotExist()
+	{
+		int x = BinarySearch.search(12, b);
+		assertThat(x, equalTo(-1));
 	}
 }

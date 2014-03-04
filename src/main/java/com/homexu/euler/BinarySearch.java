@@ -9,33 +9,29 @@ public class BinarySearch {
 	
 	public static int search(int lookFor, int[] input, int start, int end)
 	{
+		if(end-start==1)
+			return input[start]==lookFor ? start: -1; //tenary
 		
-		int half = start + (end-start)/2;
+		int half = (end+start)/2;
 		
+		boolean isLeft = lookFor<input[half];
 		
-		search(lookFor, input, start, end);
+		return isLeft? search(lookFor, input, start, half): search(lookFor, input, half, end);
 		
-		boolean isLeft = lookFor<=input[half];
-		
-		if(isLeft){
-			end = half;
-			half = start + (end-start)/2;
+/*		if(isLeft){
+			return search(lookFor, input, start, half);
 		}
 		
-		else
-		{
-			start = half+1;
-			half = start + (end-start)/2;
+		else{
+			return search(lookFor, input, half, end);
 		}
+		
 		
 		if(end-start==1){
-			if(input[start]==1)
+			if(input[start]==lookFor)
 				return start;
 			else
-				return end;
-		}
+				return -1;*/
 		
-		else
-			return -1;
 	}
 }
