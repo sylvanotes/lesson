@@ -4,11 +4,7 @@ public class Euclid {
 	
 	public static int gcd(int p, int q)
 	{
-		
-		if(p%q==0)
-			return q;
-		else
-			return gcd(q, p%q);
+		return p%q==0 ? q : gcd(q, p%q);
 	}
 
 }
