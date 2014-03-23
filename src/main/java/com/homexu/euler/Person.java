@@ -10,27 +10,36 @@ public class Person {
     	this.name = name;
     }
     
-    public String toString()
+    public static void printNames(Person p)
     {
-    	return name;
+    	System.out.println(p.name);
+    	
+    	for(Person child: p.children)
+    		printNames(child);
+    	
     }
     
-    public static void printNames(Person parent, ArrayList<Person> des)
+    public static void main(String[] args)
     {
-    	System.out.println(parent.toString());
+    	Person grandpa = new Person("Grandpa");
+    	Person uncle = new Person("Uncle");
+    	Person mom = new Person("Mom");
+    	Person jolin = new Person("Jolin");
+    	Person joanna = new Person("Joanna");
+    	Person jacob = new Person("Jacob");
+    	Person camilla = new Person("Camilla");
+    	Person rory = new Person("Rory");
     	
-    	for(Person m: des)
-    		System.out.print(m.toString() + " ");
+    	grandpa.children.add(uncle);
+    	grandpa.children.add(mom);
     	
-    	/*if(there are still descendents)
-    	{
-    		for(Person n: des)
-    			return(n, ndes);
-    	}
-    	else
-    	{
-    		return;
-    	}*/
+    	uncle.children.add(jolin);
+    	uncle.children.add(joanna);
+    	uncle.children.add(jacob);
     	
+    	mom.children.add(camilla);
+    	mom.children.add(rory);
+    	
+    	printNames(grandpa);
     }
 }
